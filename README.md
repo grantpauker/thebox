@@ -1,2 +1,9 @@
-#The Box
-To initialize, run: npm install. To start, run: npm start.
+To initialize, run: 
+```
+npm install
+``` 
+<\br>
+To start, run:
+```
+npm start
+```
