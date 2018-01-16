@@ -1,0 +1,14 @@
+{
+  "name": "electron-hello-world",
+  "version": "1.0.0",
+  "description": "Hello world",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Grant Pauker",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^1.7.10"
+  }
+}
