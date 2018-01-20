@@ -22,15 +22,24 @@
 </head>
 
 <body>
-
-  <div id="weather">
-    <div id="main-info">
+  <div class="wrapper">
+    <div class="grid-icon">
       <img id="main-icon"></img>
-      <h id="temperature" style="font-size:44px;"></h>
+    </div>
+    <div id="chart-box" class="two">
+      <canvas id="myChart"></canvas>
+
 
     </div>
-    <h id="time"></h>
-    <div id="misc-info">
+    <div class="grid-main inline-block">
+      <h id="temperature" class="inline-block"></h>
+
+      <h id="time" class="inline-block"></h>
+    </div>
+    <div>
+
+    </div>
+    <div class="misc-info inline-block">
       <div>
         Percipitation:
         <h id="pop"></h>%
@@ -44,15 +53,15 @@
         <h id="wind-speed"></h> mph
       </div>
     </div>
+
   </div>
-  <div id="chart-box">
-    <canvas id="myChart"></canvas>
-  </div>
+
+
 </body>
 
 <script>
   require('./renderer.js');
 </script>
-<script src="weather.js"></script>
+<script src="screen_0.js"></script>
 
 </html>

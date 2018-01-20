@@ -1,38 +1,69 @@
+.inline-block {
+  display: inline-block;
+}
+
 #chart-box {
   box-sizing: border-box;
 }
 
-#weather {
-  width: 600px;
+#temperature{
+  font-size: 44px;
 }
+#time{
+  font-size: 18px;
 
+}
 #main-icon {
-  display: inline-block;
-  vertical-align: -60%;
-  height: 100px;
-  width: 100px;
+  --test: 90px;
+  height: var(--test);
+  width: var(--test);
+  margin-top: -20px;
 }
 
-#temperature {
-  vertical-align: 40%;
-  display: inline-block;
-}
-
-#main-info {
-  display: inline-block;
-}
-
-#misc-info {
-  display: inline-block;
+.misc-info {
   text-align: right;
   align-items: right;
   min-width: 20%;
   font-size: 16px;
 }
 
-#time {
-  position: relative;
-  left: -140px;
-  top: 0;
-  font-size: 16px;
+.wrapper>div {
+  /*border: 2px solid rgb(233, 171, 88);
+  border-radius: 5px;
+  background-color: rgba(233, 171, 88, .5);*/
+  padding: 1em;
+  /*color: #d9480f;*/
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 100px 200px;
+  grid-template-columns: 100px 175px 100px 200px;
+  grid-gap: 10px;
+  /*grid-auto-rows: minmax(50px, auto);*/
+}
+
+.grid-icon {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.two {
+  grid-column: 1/5;
+  grid-row: 2;
+}
+
+.grid-min {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.five {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.seven {
+  grid-column: 4;
+  grid-row: 1;
 }

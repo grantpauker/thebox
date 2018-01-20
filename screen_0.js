@@ -1,10 +1,9 @@
-const hour_lookahead = 10;
+const hour_lookahead = 12;
 const height = 200;
-const width = 500;
+const width = 600;
 const padding_top = 40;
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
-var hourlyData = [];
 var temperatureChartData = [];
 var lablesChartData = [];
 
@@ -34,8 +33,7 @@ function getDate() {
 
 var clockTimeout = setTimeout(function t() {
   document.getElementById("time").innerHTML = getTime();
-  document.getElementById("date").innerHTML = getDate();
-}, 500);
+}, 1000);
 
 $.ajax({
   url: "json/hourly.json",
@@ -49,18 +47,15 @@ $.ajax({
       var ampm = hour >= 12 ? 'pm' : 'am';
       hour = hour % 12;
       hour = hour ? hour : 12; // the hour '0' should be '12'
-      // hourlyData.push(new WeatherSnippet(newData[i].FCTTIME.epoch, newData[i].temp.english, newData[i].pop, newData[i].humidity, newData[i].wspd, newData[i].icon));
       temperatureChartData.push(parseInt(newData[i].temp.english));
       lablesChartData.push(hour + ampm);
 
     }
     max = Math.max(...temperatureChartData);
     min = Math.min(...temperatureChartData);
-
     range = max - min;
     max += Math.ceil(range * 0.1);
     min -= Math.ceil(range * 0.1);
-    // console.log(hourlyData);
   }
 });
 
