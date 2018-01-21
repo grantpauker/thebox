@@ -1,3 +1,10 @@
+// const forecastURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/forecast/q/CA/La_jolla.json";
+// const conditionsURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/conditions/q/CA/La_jolla.json";
+// const hourlyURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/hourly/q/CA/La_jolla.json";
+const forecastURL = "json/forecast.json";
+const conditionsURL = "json/conditions.json";
+const hourlyURL = "json/hourly.json";
+
 const hour_lookahead = 12;
 const height = 200;
 const width = 600;
@@ -36,7 +43,7 @@ var clockTimeout = setTimeout(function t() {
 }, 1000);
 
 $.ajax({
-  url: "json/hourly.json",
+  url: hourlyURL,
   async: false,
   dataType: 'json',
   success: function(data) {
@@ -60,7 +67,7 @@ $.ajax({
 });
 
 $.ajax({
-  url: "json/conditions.json",
+  url: conditionsURL,
   async: false,
   dataType: 'json',
   success: function(d) {
@@ -74,20 +81,24 @@ $.ajax({
   }
 });
 $.ajax({
-  url: "json/forecast.json",
+  url: forecastURL,
   async: false,
   dataType: 'json',
   success: function(d) {
     var data = d.forecast.simpleforecast.forecastday;
 
     document.getElementById("pop").innerHTML = data[0].pop;
+    document.getElementById("temp-low").innerHTML = data[0].low.fahrenheit;
+    document.getElementById("temp-high").innerHTML = data[0].high.fahrenheit;
+
+
 
   }
 });
 
 var canvas = document.getElementById("myChart");
 var ctx = canvas.getContext("2d");
-var container = document.getElementById("chart-box");
+var container = document.getElementById("grid-chart");
 container.setAttribute("style", "height:" + (height + padding_top) + "px; width: " + width + "px;")
 Chart.defaults.global.tooltips.yPadding = 10;
 var chart = new Chart(ctx, {
