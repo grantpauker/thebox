@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>The Box</title>
+  <script>
+    if (typeof module === 'object') {
+      window.module = module;
+      module = undefined;
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+  <script>
+    if (window.module) module = window.module;
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="screen_1.css">
+</head>
+
+<body>
+  <div>
+    Pop:
+    <h id="pop"></h>
+  </div>
+  <div>
+    Low:
+    <h id="temp-low"></h>
+  </div>
+  <div>
+    High:
+    <h id="temp-high"></h>
+  </div>
+  <div>
+    Wind:
+    <h id="wind-speed"></h>
+  </div>
+  <div>
+    Humidity:
+    <h id="humidity"></h>
+  </div>
+
+</body>
+
+<script>
+  require('./renderer.js');
+</script>
+<script src="global.js"></script>
+<script src="screen_1.js"></script>
+
+</html>
