@@ -7,7 +7,7 @@
 }
 
 #time {
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #main-icon {
@@ -25,7 +25,7 @@
 .wrapper {
   display: grid;
   grid-template-rows: 100px 200px;
-  grid-template-columns: 100px 175px 100px 200px;
+  grid-template-columns: 125px 200px 75px 200px;
   grid-gap: 10px;
 }
 
