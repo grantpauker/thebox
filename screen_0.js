@@ -1,14 +1,7 @@
-// const forecastURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/forecast/q/CA/La_jolla.json";
-// const conditionsURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/conditions/q/CA/La_jolla.json";
-// const hourlyURL = "http://api.wunderground.com/api/ce4f08aa7cc2cea5/hourly/q/CA/La_jolla.json";
-const forecastURL = "json/forecast.json";
-const conditionsURL = "json/conditions.json";
-const hourlyURL = "json/hourly.json";
-
+const chart_height = 200;
+const chart_width = 600;
 const hour_lookahead = 12;
-const height = 200;
-const width = 600;
-const padding_top = 40;
+const chart_padding_top = 40;
 const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var temperatureChartData = [];
@@ -16,6 +9,7 @@ var lablesChartData = [];
 
 var min, max, range;
 
+// openScree(1);
 function getTime() {
   var today = new Date();
   var h = today.getHours();
@@ -74,7 +68,16 @@ $.ajax({
     var data = d.current_observation;
 
     var eIcon = document.getElementById("main-icon");
-    eIcon.setAttribute("src", "icons/black/svg/" + data.icon + ".svg");
+    var today = new Date();
+    var h = today.getHours();
+    if (h > 19 || h < 7) {
+      eIcon.setAttribute("src", "icons/black/svg/nt_" + data.icon + ".svg");
+    } else {
+      eIcon.setAttribute("src", "icons/black/svg/" + data.icon + ".svg");
+    }
+
+    document.getElementById("conditions").innerHTML = data.weather;
+
     document.getElementById("temperature").innerHTML = data.temp_f + " °F";
     document.getElementById("humidity").innerHTML = data.relative_humidity;
     document.getElementById("wind-speed").innerHTML = data.wind_mph;
@@ -99,7 +102,7 @@ $.ajax({
 var canvas = document.getElementById("myChart");
 var ctx = canvas.getContext("2d");
 var container = document.getElementById("grid-chart");
-container.setAttribute("style", "height:" + (height + padding_top) + "px; width: " + width + "px;")
+container.setAttribute("style", "height:" + (chart_height + chart_padding_top) + "px; width: " + chart_width + "px;")
 Chart.defaults.global.tooltips.yPadding = 10;
 var chart = new Chart(ctx, {
   type: 'line',
@@ -122,7 +125,7 @@ var chart = new Chart(ctx, {
     layout: {
       padding: {
         // Any unspecified dimensions are assumed to be 0
-        top: padding_top
+        top: chart_padding_top
       }
     },
 
