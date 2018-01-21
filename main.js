@@ -1,3 +1,4 @@
+const screen = 0;
 const {
   app,
   BrowserWindow
@@ -14,7 +15,7 @@ function createWindow() {
   });
 
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'screen_0.html'),
+    pathname: path.join(__dirname, 'screen_'+screen+'.html'),
     protocol: 'file',
     slashes: true
   }));
