@@ -1,15 +1,14 @@
 const chart_height = 200;
 const chart_width = 600;
-const hour_lookahead = 12;
+const hour_lookahead = 24;
+const every_n_hours = 3;
 const chart_padding_top = 40;
-const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var temperatureChartData = [];
 var lablesChartData = [];
 
 var min, max, range;
 
-// openScree(1);
 function getTime() {
   var today = new Date();
   var h = today.getHours();
@@ -48,10 +47,14 @@ $.ajax({
       var ampm = hour >= 12 ? 'pm' : 'am';
       hour = hour % 12;
       hour = hour ? hour : 12; // the hour '0' should be '12'
-      temperatureChartData.push(parseInt(newData[i].temp.english));
-      lablesChartData.push(hour + ampm);
+
+      if (i % every_n_hours == 0) {
+        temperatureChartData.push(parseInt(newData[i].temp.english));
+        lablesChartData.push(hour + ampm);
+      }
 
     }
+
     max = Math.max(...temperatureChartData);
     min = Math.min(...temperatureChartData);
     range = max - min;
@@ -76,13 +79,12 @@ $.ajax({
       eIcon.setAttribute("src", "icons/black/svg/" + data.icon + ".svg");
     }
 
-    document.getElementById("conditions").innerHTML = data.weather;
-
     document.getElementById("temperature").innerHTML = data.temp_f + " °F";
     document.getElementById("humidity").innerHTML = data.relative_humidity;
     document.getElementById("wind-speed").innerHTML = data.wind_mph;
   }
 });
+
 $.ajax({
   url: forecastURL,
   async: false,
@@ -99,6 +101,7 @@ $.ajax({
   }
 });
 
+
 var canvas = document.getElementById("myChart");
 var ctx = canvas.getContext("2d");
 var container = document.getElementById("grid-chart");
@@ -113,6 +116,7 @@ var chart = new Chart(ctx, {
       borderColor: "rgba(32, 162, 219, 255)",
       data: temperatureChartData,
       datalabels: {
+
         align: 'end',
         anchor: 'end'
       }
@@ -145,6 +149,7 @@ var chart = new Chart(ctx, {
       }
     },
     scales: {
+      showXLabels: 5,
       ticks: {
         userCallback: function(value, index, values) {
           return "";
@@ -165,6 +170,9 @@ var chart = new Chart(ctx, {
         stacked: true
       }],
       xAxes: [{
+        ticks:{
+          fontSize:20
+        },
         gridLines: {
           display: false
         }

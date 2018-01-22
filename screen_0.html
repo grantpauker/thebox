@@ -26,16 +26,16 @@
 
     <div id="grid-icon">
       <img id="main-icon"></img>
-      <h id="conditions">Dog</h>
     </div>
 
     <div id="grid-chart">
       <canvas id="myChart"></canvas>
     </div>
 
-    <div id="grid-main" class="inline-block">
+    <div id="grid-main" class="text-center inline-block">
       <div>
         <h id="temperature" class="inline-block"></h>
+
       </div>
 
       <div>
@@ -43,18 +43,19 @@
       </div>
     </div>
 
+
+
     <div id="grid-forecast" class="inline-block">
       <div>
         Low:
         <h id="temp-low" class="inline-block"></h>
+        °F
       </div>
       <div>
         High:
         <h id="temp-high" class="inline-block"></h>
+        °F
       </div>
-    </div>
-
-    <div id="grid-misc" class="inline-block">
       <div>
         Percipitation:
         <h id="pop"></h>%
@@ -75,7 +76,6 @@
 
 <script>
   require('./renderer.js');
-
 </script>
 <script src="global.js"></script>
 
