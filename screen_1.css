@@ -1,0 +1,20 @@
+.inline-block {
+  display: inline-block;
+}
+
+.wrapper>div {
+  border: 2px solid rgb(255, 0, 0);
+  padding: 1em;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: 50px 150px 125px;
+  grid-template-columns: 100px 100px 100px 100px 100px 100px;
+}
+
+
+
+#icon-1 {
+  
+}
