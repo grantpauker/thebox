@@ -11,8 +11,26 @@ const hourlyURL = "json/hourly.json";
 const forecast10dayURL = "json/forecast10day.json";
 const hourly10dayURL = "json/hourly10day.json";
 
+const height = 400;
+const width = 600;
+
+var files = require('fs').readdirSync(__dirname);
+var s = [];
+for (var f in files) {
+  if (/^screen_([0-9]+)\.html/.test(files[f])) {
+    s.push(files[f]);
+  }
+}
+const screens = s;
+const screen_count = screens.length;
+
+
 function openScreen(n) {
-  window.location.href = "screen_" + n + ".html";
+  if (n>= 0 && n < screen_count && n % 1 == 0) {
+    window.location.href = "screen_" + n + ".html";
+  } else {
+    console.error("Screen " + n + " does nots exist");
+  }
 }
 
 function getScreen() {
@@ -24,3 +42,6 @@ function getScreen() {
   n = parseInt(n);
   return n;
 }
+
+const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const weekday_short = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
